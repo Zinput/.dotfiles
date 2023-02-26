@@ -267,3 +267,15 @@ bindsym $mod+o exec killall -SIGUSR1 waybar
 
 # tiling exceptions
 # for_window [app_id="com/.https://ultimaker.UltiMaker-Cura"] floating enable
+
+# volume and mic control
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# save screenshot
+bindsym $mod+F6 exec grim ~/Pictures/$(date +'%m-%d-%Y-%I%M'.png)
+
+# screen mirroring (if this doesn't work, change eDP-2 to your display)
+bindsym $mod+F9 exec wl-mirror eDP-2

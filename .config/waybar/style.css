@@ -7,6 +7,7 @@
   box-shadow: none;
   text-shadow: none;
   transition-duration: 0s;
+  font-weight: normal;
 }
 
 window#waybar {
@@ -16,9 +17,13 @@ window#waybar {
 
 #window,
 #memory,
-#disk,
 #pulseaudio,
-#custom-weather,
+#disk,
+
+#power {
+  padding-left: 1rem;
+}
+
 #cpu {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -27,6 +32,16 @@ window#waybar {
 #custom-weather {
   padding-left: 2rem;
   font-weight: bold;
+}
+
+#battery {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#idle_inhibitor {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 #workspaces {
