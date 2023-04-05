@@ -1,21 +1,21 @@
 * {
-  font-family: Iosevka;
+  font-family: monospace;
   border-color: transparent;
   outline-style: none;
 }
 
 window {
   border-radius: 1rem;
-  background: #1b182c;
-  color: white;
+  background: #1e1e2e;
+  color: #cdd6f4;
   padding: 1rem;
 }
 
 #input {
   border-radius: 1rem;
   border-color: transparent;
-  background: #962a54;
-  color: white;
+  background: #181825;
+  color: #cdd6f4;
   font-size: 16pt;
   padding: 0.5rem;
   outline: none;
@@ -26,7 +26,8 @@ window {
 }
 
 #selected {
-  background: #a33962;
+  background: #181825;
+  color: #fab387;
   border-color: transparent;
   border: none;
   margin: 0;
@@ -34,10 +35,10 @@ window {
   border-radius: 1rem;
 }
 
-#entry:nth-child(even) {
-  background: #1f1c33;
-  border-radius: 1rem;
-}
+/* #entry:nth-child(even) { */
+/*   background: #1f1c33; */
+/*   border-radius: 1rem; */
+/* } */
 
 #text {
   padding: 0.75rem;
