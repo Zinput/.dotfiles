@@ -19,6 +19,7 @@ window#waybar {
 #memory,
 #pulseaudio,
 #disk,
+#network,
 
 #power {
   padding-left: 1rem;
@@ -37,6 +38,15 @@ window#waybar {
 #battery {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+#upower {
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+#network.disconnected {
+  color: orange;
 }
 
 #idle_inhibitor {

@@ -261,6 +261,7 @@ xwayland enable
 # Autostart programs
 exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec udiskie --smart-tray
+exec nm-applet --indicator
 
 # kill waybar
 bindsym $mod+o exec killall -SIGUSR1 waybar
@@ -275,7 +276,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # save screenshot
-bindsym $mod+F6 exec grim ~/Pictures/$(date +'%m-%d-%Y-%I%M'.png)
+# bindsym $mod+F6 exec grim ~/Pictures/$(date +'%m-%d-%Y-%I%M'.png)
+bindsym $mod+p exec grimshot save active
 
 # screen mirroring (if this doesn't work, change eDP-2 to your display)
 bindsym $mod+F9 exec wl-mirror eDP-2
