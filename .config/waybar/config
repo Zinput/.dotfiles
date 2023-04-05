@@ -1,5 +1,7 @@
 {
     "layer": "top",
+    "position": "top",
+    "height": 33,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["clock", "custom/weather"],
     "modules-right": ["wlr/taskbar", "pulseaudio", "memory", "cpu", "network", "idle_inhibitor", "custom/power"],
@@ -87,7 +89,7 @@
     },
     "custom/power": {
         "format": "<span font_weight='bold'> </span>",
-	"on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Logout' 'swaymsg exit' -b 'Suspend' 'swaymsg exec systemctl suspend' -b 'Reboot' 'systemctl reboot' -b 'Shutdown' 'systemctl poweroff'"
-	}
+	      "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Logout' 'swaymsg exit' -b 'Suspend' 'swaymsg exec systemctl suspend' -b 'Reboot' 'systemctl reboot' -b 'Shutdown' 'systemctl poweroff'"
+	  }
 
 }
