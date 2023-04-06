@@ -15,9 +15,9 @@ window {
 #input {
   border-radius: 1rem;
   border-color: transparent;
-  background: #181825;
+  background: transparent;
   color: #cdd6f4;
-  font-size: 16pt;
+  font-size: 14pt;
   padding: 0.5rem;
   outline: none;
 }
@@ -43,16 +43,18 @@ window {
 
 #text {
   padding: 0.75rem;
-  font-size: 13pt;
+  font-size: 11pt;
 }
 
 #outer-box {
-  background: transparent;
-  padding: 1rem;
+  background: #181825;
+  border-radius: 1rem;
+  padding: 0.5rem;
 }
 
 #inner-box {
-  background: transparent;
+  background: #1e1e2e;
+  border-radius: 1rem;
 }
 
 #entry {
