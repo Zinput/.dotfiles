@@ -1,7 +1,5 @@
 {
     "layer": "top",
-    "position": "top",
-    "height": 33,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["clock", "custom/weather"],
     "modules-right": ["wlr/taskbar", "pulseaudio", "memory", "cpu", "network", "idle_inhibitor", "custom/power"],
