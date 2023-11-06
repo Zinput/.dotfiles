@@ -38,7 +38,7 @@
     "network": {
         "interval": 5,
         "format-wifi": "<span font_weight='bold'></span>  {essid} ({signalStrength}%)", // Icon: wifi
-        "format-ethernet": "<span font_weight='bold'></span>  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+        "format-ethernet": "<span font_weight='bold'></span>  {ifname}", // Icon: ethernet
         "format-disconnected": "<span font_weight='bold'>⚠</span>  Disconnected",
         "tooltip-format": "{ifname}: {ipaddr}",
         "on-click": "xfce4-terminal -e 'nmtui'",
