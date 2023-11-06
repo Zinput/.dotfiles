@@ -25,7 +25,7 @@ systemctl enable bluetooth.service
 ```
 
 Theming:  
-Open nwg-look to configure GTK theme.  
+Use gsettings to set the GTK theme.
 Edit the line starting with "output * bg" in ~/.config/sway/config with your preferred wallpaper.
 
 Screenshots:  
