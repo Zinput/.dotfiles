@@ -6,6 +6,27 @@
 lvim.plugins = {
   "catppuccin/nvim",
   "stevearc/vim-arduino",
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
 }
 
 lvim.colorscheme = "catppuccin-mocha"
@@ -64,3 +85,23 @@ local function arduino_status()
   end
   return line
 end
+
+-- Copilot setup
+local ok, copilot = pcall(require, "copilot")
+if not ok then
+  return
+end
+
+copilot.setup {
+  suggestion = {
+    keymap = {
+      accept = "<c-l>",
+      next = "<c-j>",
+      prev = "<c-k>",
+      dismiss = "<c-h>",
+    },
+  },
+}
+
+local opts = { noremap = true, silent = true }
+vim.api.nvim_set_keymap("n", "<c-s>", "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<CR>", opts)
