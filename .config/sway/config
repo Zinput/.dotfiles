@@ -277,9 +277,10 @@ include /etc/sway/config.d/*
 xwayland enable
 
 # Autostart programs
-exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec udiskie --smart-tray
 exec nm-applet --indicator
+exec /usr/bin/emacs --daemon
 
 # kill waybar
 bindsym $mod+o exec killall -SIGUSR1 waybar

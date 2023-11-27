@@ -14,3 +14,4 @@ PS1='[\u@\h \W]\$ '
 
 export PATH=/home/jason/.local/bin:$PATH
 export PATH=/home/jason/.cargo/bin:$PATH
+export PATH=/home/jason/.config/emacs/bin:$PATH
