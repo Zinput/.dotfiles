@@ -17,6 +17,14 @@ lvim.plugins = {
       require("copilot_cmp").setup()
     end,
   },
+  {"lervag/vimtex",
+    init = function()
+      vim.g.vimtex_view_method = 'zathura'
+      vim.g.vimtex_syntax_enabled = 1
+      vim.g.vimtex_compiler_method = 'latexmk'
+    end,
+  },
+  "Pocco81/auto-save.nvim",
 }
 
 lvim.colorscheme = "catppuccin-mocha"

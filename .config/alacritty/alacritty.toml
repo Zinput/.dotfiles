@@ -1,0 +1,13 @@
+import = ["/home/jason/.config/alacritty/catppuccin-mocha.toml"]
+live_config_reload = true
+
+[font]
+size = 10
+
+[font.normal]
+family = "Iosevka Nerd Font"
+style = "Regular"
+
+[window.padding]
+x = 16
+y = 16
