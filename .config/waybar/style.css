@@ -19,6 +19,7 @@
 #cpu,
 #battery,
 #network,
+#custom-vpn,
 #idle_inhibitor,
 #custom-power {
   background: #1e1e2e;
@@ -114,6 +115,14 @@ tooltip {
 
 #network.disconnected {
   color: orange;
+}
+
+#custom-vpn.connected {
+  color: green;
+}
+
+#custom-vpn.disconnected {
+  color:orange;
 }
 
 #custom-power{

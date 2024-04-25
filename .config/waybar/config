@@ -2,7 +2,7 @@
     "layer": "top",
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["clock", "custom/weather"],
-    "modules-right": ["wlr/taskbar", "pulseaudio", "memory", "cpu", "network", "idle_inhibitor", "custom/power"],
+    "modules-right": ["wlr/taskbar", "pulseaudio", "memory", "cpu", "custom/vpn", "network", "idle_inhibitor", "custom/power"],
     "sway/window": {
         "max-length": 50
     },
@@ -41,7 +41,15 @@
         "format-ethernet": "<span font_weight='bold'></span>  {ifname}", // Icon: ethernet
         "format-disconnected": "<span font_weight='bold'>⚠</span>  Disconnected",
         "tooltip-format": "{ifname}: {ipaddr}",
-        "on-click": "xfce4-terminal -e 'nmtui'",
+        "on-click": "alacritty -e 'nmtui'",
+    },
+    "custom/vpn": {
+        "format": "{icon}",
+        "exec": "$HOME/.config/waybar/modules/vpn_echo.sh",
+        "return-type": "json",
+        "tooltip-format": "{}",
+        "interval": 5,
+        "format-icons": ["",""]
     },
     "pulseaudio": {
         "format": "{volume}% <span font_weight='bold'>{icon} {format_source}</span>",

@@ -45,7 +45,8 @@ client.background        $base
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/wallpaperus04.jpg fill
+# output * bg ~/Pictures/wallpaperus04.jpg fill
+exec mpvpaper -o "no-audio --loop-file" '*' ~/Pictures/Wallpapers/nebulaWallpaperNoWatermark.webm
 #
 # Example configuration:
 #
