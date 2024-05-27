@@ -75,6 +75,7 @@ exec swayidle -w \
 	 before-sleep 'swaylock -f -c 000000'
 # swayidle exceptions:
 for_window [class="Google-chrome"] inhibit_idle fullscreen
+for_window [class="firefox"] inhibit_idle fullscreen
 
 #
 # Example configuration:
