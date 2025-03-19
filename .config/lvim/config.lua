@@ -25,50 +25,66 @@ lvim.plugins = {
     end,
   },
   "Pocco81/auto-save.nvim",
+  "Joakker/lua-json5",
+  "mfussenegger/nvim-dap-python",
+  -- {"nvim-java/nvim-java",
+  --   config = false,
+  --   dependencies = {
+  --   {
+  --     "neovim/nvim-lspconfig",
+  --     opts = {
+  --       servers = {
+  --         jdtls = {
+  --           -- your jdtls configuration goes here
+  --         },
+  --       },
+  --       setup = {
+  --         jdtls = function()
+  --           require("java").setup({
+  --             -- your nvim-java configuration goes here
+  --           })
+  --         end,
+  --       },
+  --     },
+  --   },
+  --   },
+  -- }
 }
 
 lvim.colorscheme = "catppuccin-mocha"
 
+-- LSP config
+-- add 'pyright' to 'skipped_servers' list
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
+-- remove 'pylsp' from 'skipped_servers' list
+lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
+  return server ~= "pylsp"
+end, lvim.lsp.automatic_configuration.skipped_servers)
+
 -- DAP config
+require('dap.ext.vscode').json_decode = require'json5'.parse
+require('dap.ext.vscode').load_launchjs(nil, {cppdbg = {'c', 'cpp'}})
+require('dap-python').setup('python')
+
 local dap = require('dap')
+
 dap.adapters.lldb = {
   type = 'executable',
-  command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
+  command = '/usr/bin/lldb-vscode',
   name = 'lldb'
 }
 
-local dap = require('dap')
-dap.configurations.cpp = {
-  {
-    name = 'Launch',
-    type = 'lldb',
-    request = 'launch',
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    args = {},
-
-    -- 💀
-    -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
-    --
-    --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
-    --
-    -- Otherwise you might get the following error:
-    --
-    --    Error on launch: Failed to attach to the target process
-    --
-    -- But you should be aware of the implications:
-    -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
-    -- runInTerminal = false,
-  },
+dap.adapters.gdb = {
+  type = 'executable',
+  command = 'gdb',
+  args = { '-i', 'dap' }
 }
 
--- If you want to use this for Rust and C, add something like this:
-
-dap.configurations.c = dap.configurations.cpp
-dap.configurations.rust = dap.configurations.cpp
+dap.adapters.cppdbg = {
+  id = 'cppdbg',
+  type = 'executable',
+  command = '/home/jason/.local/share/nvim/custom/vscode-cpptools/extension/debugAdapters/bin/OpenDebugAD7'
+}
 
 -- Copilot config
 local ok, copilot = pcall(require, "copilot")

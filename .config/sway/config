@@ -76,6 +76,7 @@ exec swayidle -w \
 # swayidle exceptions:
 for_window [class="Google-chrome"] inhibit_idle fullscreen
 for_window [class="firefox"] inhibit_idle fullscreen
+for_window [class="floorp"] inhibit_idle fullscreen
 
 #
 # Example configuration:
@@ -266,7 +267,7 @@ bar {
 # GTK Theming
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Catppuccin-Mocha-Standard-Peach-Dark'
+    gsettings set $gnome-schema gtk-theme 'catppuccin-mocha-peach-standard+default'
     gsettings set $gnome-schema icon-theme 'Papirus-Dark'
     gsettings set $gnome-schema cursor-theme 'Adwaita'
     gsettings set $gnome-schema font-name 'Cantarell 11'
