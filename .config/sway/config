@@ -44,10 +44,6 @@ client.background        $base
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg ~/Pictures/wallpaperus04.jpg fill
-exec mpvpaper -o "no-audio --loop-file" '*' ~/Pictures/Wallpapers/nebulaWallpaperNoWatermark.webm
-#
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -56,6 +52,18 @@ exec mpvpaper -o "no-audio --loop-file" '*' ~/Pictures/Wallpapers/nebulaWallpape
 output * adaptive_sync on
 output DP-1 mode 1920x1080@144.001Hz pos 0 0
 output DP-3 mode 1920x1080@144.001Hz pos 1920 0
+
+### Wallpaper configuration
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+#
+# Standard wallpaper
+# output * bg ~/Pictures/wallpaperus04.jpg fill
+#
+# Live wallpaper (path to playlist)
+exec mpvpaper -o "no-audio --loop-file --loop-playlist input-ipc-server=/tmp/mpv-socket" '*' ~/Pictures/Wallpapers/Live/
+# Cycle live wallpaper
+bindsym $mod+n exec echo 'playlist-next' | socat - /tmp/mpv-socket
+
 
 ### Idle configuration
 #
