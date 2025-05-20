@@ -2,13 +2,25 @@ local options = {
   adapters = {
     localllama = function()
       return require("codecompanion.adapters").extend("openai_compatible", {
-        formatted_name = "Qwen2.Coder-7B-Instruct",
+        formatted_name = "Qwen2.5-Coder-7B-Instruct",
         env = {
           url = "http://127.0.0.1:5000", -- optional: default value is ollama url http://127.0.0.1:11434
           -- api_key = "OpenAI_API_KEY", -- optional: if your endpoint is authenticated
           chat_url = "/v1/chat/completions", -- optional: default value, override if different
           models_endpoint = "/v1/models", -- optional: attaches to the end of the URL to form the endpoint to retrieve models
         },
+        -- Uncomment handler code to fix llama.cpp's llama-server support
+        -- Tool support in llama-server is not currently working because of no tool stream support
+        -- handlers = {
+        --   chat_output = function(self, data)
+        --     local openai = require("codecompanion.adapters.openai")
+        --     local result = openai.handlers.chat_output(self, data)
+        --     if result ~= nil then
+        --       result.output.role = "llm" -- "assistant"  works as well
+        --     end
+        --     return result
+        --   end,
+        -- },
         schema = {
           model = {
             default = "Qwen2.5-Coder-7B-Instruct-exl2",  -- define llm model to be used
