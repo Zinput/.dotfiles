@@ -6,6 +6,9 @@ size = 10
 family = "Iosevka Nerd Font"
 style = "Regular"
 
+[window]
+opacity = 0.9
+
 [window.padding]
 x = 16
 y = 16
