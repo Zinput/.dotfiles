@@ -2,9 +2,9 @@ local options = {
   adapters = {
     localllama = function()
       return require("codecompanion.adapters").extend("openai_compatible", {
-        formatted_name = "Qwen2.5-Coder-7B-Instruct",
+        formatted_name = "Qwen3-Coder-30B-A3B-Instruct",
         env = {
-          url = "http://127.0.0.1:5000", -- optional: default value is ollama url http://127.0.0.1:11434
+          url = "http://192.168.1.4:8000", -- optional: default value is ollama url http://127.0.0.1:11434
           -- api_key = "OpenAI_API_KEY", -- optional: if your endpoint is authenticated
           chat_url = "/v1/chat/completions", -- optional: default value, override if different
           models_endpoint = "/v1/models", -- optional: attaches to the end of the URL to form the endpoint to retrieve models
@@ -23,7 +23,7 @@ local options = {
         -- },
         schema = {
           model = {
-            default = "Qwen2.5-Coder-7B-Instruct-exl2",  -- define llm model to be used
+            default = "Qwen3-Coder-30B-A3B-Instruct-UD-Q4_K_XL.gguf",  -- define llm model to be used
           },
           temperature = {
             order = 1,
@@ -48,7 +48,7 @@ local options = {
             end,
           },
           top_p = {
-            order = 2,
+            order = 3,
             mapping = "parameters",
             type = "number",
             optional = true,
@@ -58,8 +58,19 @@ local options = {
               return n >= 0 and n <= 1, "Must be between 0 and 1"
             end,
           },
-          max_completion_tokens = {
+          repeat_penalty = {
             order = 4,
+            mapping = "parameters",
+            type = "number",
+            optional = true,
+            default = 1.05,
+            desc = "Repeat Penalty",
+            validate = function(n)
+              return n >= -2 and n <= 2, "Must be between -2 and 2"
+            end,
+          },
+          max_completion_tokens = {
+            order = 5,
             mapping = "parameters",
             type = "integer",
             optional = true,
@@ -70,7 +81,7 @@ local options = {
             end,
           },
           stop = {
-            order = 5,
+            order = 6,
             mapping = "parameters",
             type = "string",
             optional = true,
@@ -81,7 +92,7 @@ local options = {
             end,
           },
           logit_bias = {
-            order = 6,
+            order = 7,
             mapping = "parameters",
             type = "map",
             optional = true,
