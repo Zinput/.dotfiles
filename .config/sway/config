@@ -14,14 +14,15 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term footclient
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu wofi --show drun
+set $menu wofi -i --show drun
 # Opacity setting
 set $opacity 0.9
+# Import theme
 include catppuccin-mocha
 
 # Visual
@@ -41,6 +42,7 @@ client.background        $base
 
 # for_window [class=".*"] opacity $opacity
 # for_window [app_id=".*"] opacity $opacity
+for_window [app_id="thunar"] opacity $opacity
 
 ### Output configuration
 #
@@ -50,17 +52,18 @@ client.background        $base
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output * adaptive_sync on
-output DP-1 mode 1920x1080@144.001Hz pos 0 0
-output DP-3 mode 1920x1080@144.001Hz pos 1920 0
+output DP-1 mode 1920x1080@144.001Hz pos 0 0 transform 90
+output DP-2 mode 2560x1440@144.000Hz pos 1080 0
+output DP-3 mode 1920x1080@144.001Hz pos 3640 0
 
 ### Wallpaper configuration
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #
 # Standard wallpaper
-# output * bg ~/Pictures/wallpaperus04.jpg fill
+output DP-1 bg ~/Pictures/Wallpapers/msmcouple.jpg fill
 #
 # Live wallpaper (path to playlist)
-exec mpvpaper -o "no-audio --loop-file --loop-playlist input-ipc-server=/tmp/mpv-socket" '*' ~/Pictures/Wallpapers/Live/
+exec mpvpaper -o "no-audio --loop-file --loop-playlist input-ipc-server=/tmp/mpv-socket" 'DP-2 DP-3' ~/Pictures/Wallpapers/Live/
 # Cycle live wallpaper
 bindsym $mod+n exec echo 'playlist-next' | socat - /tmp/mpv-socket
 
@@ -98,7 +101,7 @@ for_window [class="floorp"] inhibit_idle fullscreen
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-input "9610:54:Glorious_Model_O" {
+input "13652:62967:Compx_SCYROX_8K_Dongle_Mouse" {
     accel_profile flat
 }
 
@@ -179,16 +182,16 @@ input "9610:54:Glorious_Model_O" {
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
     # workspace location config
-    workspace 1 output DP-1
-    workspace 2 output DP-1
-    workspace 3 output DP-1
-    workspace 4 output DP-1
-    workspace 5 output DP-1
+    workspace 1 output DP-2
+    workspace 2 output DP-2
+    workspace 3 output DP-2
+    workspace 4 output DP-2
+    workspace 5 output DP-2
     workspace 6 output DP-3
     workspace 7 output DP-3
     workspace 8 output DP-3
     workspace 9 output DP-3
-    workspace 10 output DP-3
+    workspace 10 output DP-1
 #
 # Layout stuff:
 #
@@ -290,6 +293,7 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec udiskie --smart-tray
 exec nm-applet --indicator
 exec /usr/bin/emacs --daemon
+exec foot --server
 
 # kill waybar
 bindsym $mod+o exec killall -SIGUSR1 waybar
@@ -304,8 +308,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # save screenshot
-# bindsym $mod+F6 exec grim ~/Pictures/$(date +'%m-%d-%Y-%I%M'.png)
-bindsym $mod+p exec grimshot save active
+bindsym $mod+p exec grimshot --notify copy anything
+bindsym $mod+Mod1+p exec grimshot --notify save anything
 
 # screen mirroring (if this doesn't work, change eDP-2 to your display)
 bindsym $mod+F9 exec wl-mirror eDP-2
