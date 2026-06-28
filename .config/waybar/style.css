@@ -91,7 +91,7 @@ tooltip {
 
 #clock {
   color: #f9e2af;
-  border-radius: 10px 0 0 10px;
+  border-radius: 10px 10px 10px 10px;
 }
 
 #custom-weather {
